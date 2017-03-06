@@ -6,7 +6,7 @@ class ProductsController < ApplicationController
 
   def new
   	@product = Product.new
-  	@categories = Category.all
+  	@categorization = @product.categorization.build
   end
 
   def create
@@ -40,7 +40,7 @@ class ProductsController < ApplicationController
 
   protected
     def product_params
-      params.require(:product).permit(:name, :price)
+      params.require(:product).permit(:name, :price, { categorization_ids: [] })
     end
 
 end

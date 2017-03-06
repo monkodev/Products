@@ -1,6 +1,6 @@
-class Product < ActiveRecord::Base
-	has_many :categories, through: :product_categos
-	has_many :product_categos
+class Product < ActiveRecord::Base	
+	has_many :categorizations
+	has_many :categories, through: :categorizations
 	validates :name, presence: true
 	validates :price, presence: true
 end
