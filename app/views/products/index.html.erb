@@ -18,7 +18,14 @@
 				  <td></td>
 				  <td><%= p.name %></td>
 			      <td><%= p.price %></td>
-			      <td><%=  %></td>
+			      <td>
+			      	<% p.category_ids.each do |ko| %>
+			      		<% al=ko.to_i %>
+			      		<% ali=Category.find(ko).name %>
+			      				<%= ali %>		      	
+			      	<% end %>
+			      		
+			      </td>
 			       <td>
                   		<%= link_to 'Editar', edit_product_path(p) %>
     					<%= link_to 'Eliminar', product_path(p),

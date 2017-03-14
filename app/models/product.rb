@@ -1,6 +1,3 @@
 class Product < ActiveRecord::Base	
-	has_many :categorizations
-	has_many :categories, through: :categorizations
-	validates :name, presence: true
-	validates :price, presence: true
+	has_and_belongs_to_many :categories
 end

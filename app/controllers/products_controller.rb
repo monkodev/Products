@@ -5,18 +5,18 @@ class ProductsController < ApplicationController
   end
 
   def new
-  	@product = Product.new
-  	@categorization = @product.categorization.build
+  	@product = Product.new  
+    @all_categories = Category.all
   end
 
   def create
   	 @product = Product.new(product_params)
-    if @product.save
+    if @product.save      
       redirect_to products_path
     else
       render :new
     end
-  end
+end
 
   def edit
 	@product = Product.find(params[:id])
@@ -40,7 +40,7 @@ class ProductsController < ApplicationController
 
   protected
     def product_params
-      params.require(:product).permit(:name, :price, { categorization_ids: [] })
+      params.require(:product).permit(:name, :price, {:category_ids => []})
     end
 
 end
